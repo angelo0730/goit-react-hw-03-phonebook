@@ -1,27 +1,17 @@
-import css from './Filter.module.css';
-import PropTypes from 'prop-types';
+import { PropTypes } from 'prop-types';
+import {FilterSection, Label, Input} from './Filter.module'
 
-export const Filter = ({ filter, setFilter }) => {
-  //filter name based on the the search keyword
-  const handleFilterChange = e => {
-    setFilter(e.target.value);
-  };
-
+export const Filter = ({ filter }) => {
   return (
-    <div className={css.container}>
-      <p>Find Contacts by Name</p>
-      <input
-        type="text"
-        name="filter"
-        placeholder="Search by name"
-        value={filter}
-        onChange={handleFilterChange}
-      />
-    </div>
+    <FilterSection>
+    <Label>
+      Filter contact by Name
+      <Input type="text" onChange={filter} />
+    </Label>
+    </FilterSection>
   );
 };
 
-Filter.propTypes = {
-  filter: PropTypes.string.isRequired,
-  setFilter: PropTypes.func.isRequired,
+Filter.prototype = {
+  filter: PropTypes.func,
 };
